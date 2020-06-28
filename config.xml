@@ -2,15 +2,15 @@
 <widget xmlns = "http://www.w3.org/ns/widgets"
     xmlns:gap = "http://phonegap.com/ns/1.0"
     xmlns:android = "http://schemas.android.com/apk/res/android"
-    id        = "com.bastisapp.kartero"
-    versionCode = "16"
-    version   = "1.6">
-    <name>Kartero</name>
+    id        = "com.itaas.tuboxv1"
+    versionCode = "17"
+    version   = "1.7">
+    <name>TuBoxv1</name>
     <description>
-        Kartero Driver App
+		TuBox Empresas
     </description>
-    <author email="daviruzsystems@gmail.com" href="http://daviruzsystems.com">
-        bastisapp.com
+    <author email="info@itaas.com.co" href="http://itaas.com.co">
+        Itaas.com.co
     </author>             
     <content src="index.html" />
                        

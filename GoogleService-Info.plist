@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>1018043303302-rpuoom6r21dvkksn9dv22m2mde67ohh0.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.1018043303302-rpuoom6r21dvkksn9dv22m2mde67ohh0</string>
+	<key>API_KEY</key>
+	<string>AIzaSyB6LB79BukBfR7nmSWUh-2SvbsUACkAmIk</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1018043303302</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.itaas.tuboxv1</string>
+	<key>PROJECT_ID</key>
+	<string>tuboxv1-kartero</string>
+	<key>STORAGE_BUCKET</key>
+	<string>tuboxv1-kartero.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1018043303302:ios:03907ca1912cf2825a5807</string>
+	<key>DATABASE_URL</key>
+	<string>https://tuboxv1-kartero.firebaseio.com</string>
+</dict>
+</plist>

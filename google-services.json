@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1018043303302",
+    "firebase_url": "https://tuboxv1-kartero.firebaseio.com",
+    "project_id": "tuboxv1-kartero",
+    "storage_bucket": "tuboxv1-kartero.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1018043303302:android:df7157618ce2c8785a5807",
+        "android_client_info": {
+          "package_name": "com.itaas.tuboxv1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1018043303302-1nih0nb47meqggoruij1u9t6vopg1tm0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDb3e6SD5aESvQV-4uSKx8xrWgMX3pZ0OU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1018043303302-1nih0nb47meqggoruij1u9t6vopg1tm0.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1018043303302-rpuoom6r21dvkksn9dv22m2mde67ohh0.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.itaas.tuboxv1"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
