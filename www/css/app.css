@@ -392,11 +392,11 @@ border:1px solid #505050;
 padding:4px 10px;
 }
 .tag.delivery{
-background:#33a17e;
+background:#000000;
 color:#fff;
 }
 .tag.pickup{
-background:#2196f3 ;
+background:#000000 ;
 color:#fff;
 }
 
@@ -422,7 +422,7 @@ background:#ba68c8;
 background:#ec391c;
 }
 .tag-status.successful {
-background:#2c9f2c ;
+background:#50ccc4 ;
 }
 .tag-status.declined ,
 .tag-status.failed,
