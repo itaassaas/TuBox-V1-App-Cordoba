@@ -233,7 +233,7 @@ color:#fff;
 }
 
 .page--login-page ons-input .text-input__label {
-color:#009688;
+color:#000000;
 }
  
 .inner .button--material--flat,
@@ -601,7 +601,7 @@ color:#fff;
 .navigation-bar--ktransparent-toolbar,
 .button--green-button
 {
-background:#009688;
+background:#000000;
 color:#fff;
 }
 
@@ -694,7 +694,7 @@ display:block;
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  background-color: #009688;
+  background-color: #000000;
   opacity: 0.6;
   position: absolute;
   top: 0;
@@ -749,4 +749,8 @@ color:#ccc;
 
 .tabbar--home_tab__button .tabbar__label{
 text-transform: capitalize;
+}
+.tam_logo
+{
+  width: 50px; height: 50px;
 }

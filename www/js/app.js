@@ -142,7 +142,7 @@ ons.ready(function() {
 	ons.setDefaultDeviceBackButtonListener(function(event) {				
 		exit_cout++;
 		if(exit_cout<=1){		
-			toastMsg("Press once again to exit!");	
+			toastMsg("Presione una vez más para salir!");
 			 setTimeout(function(){ 
 			 	 exit_cout=0;
 			 }, 3000);
@@ -180,7 +180,7 @@ function setBaloon()
 
 function noNetConnection()
 {
-	toastMsg( getTrans("Internet connection lost","net_connection_lost") );
+	toastMsg( getTrans("Conexión a internet perdida","net_connection_lost") );
 }
 
 
@@ -276,8 +276,8 @@ document.addEventListener("init", function(event) {
 				if ( hasConnection()){
 				    callAjax("GetAppSettings",'');
 				} else {				
-				   toastMsg( getTrans("Not connected to internet","no_connection") );
-				   $(".loading_settings").html( getTrans("Not connected to internet","no_connection") );
+				   toastMsg( getTrans("No conectado a internet","no_connection") );
+				   $(".loading_settings").html( getTrans("No conectado a internet","no_connection") );
 				   $(".refresh_net").show();
 				}	  
 			} else {
@@ -285,8 +285,8 @@ document.addEventListener("init", function(event) {
 		           if ( hasConnection()){
 				       callAjax("GetAppSettings",'');
 					} else {				
-					   toastMsg( getTrans("Not connected to internet","no_connection") );
-					   $(".loading_settings").html( getTrans("Not connected to internet","no_connection") );
+					   toastMsg( getTrans("No conectado a internet","no_connection") );
+					   $(".loading_settings").html( getTrans("No conectado a internet","no_connection") );
 					   $(".refresh_net").show();
 					}	             
 	            }, false);
@@ -359,7 +359,7 @@ document.addEventListener("init", function(event) {
 					params+="&end="+_end;
 					
 					if ( !hasConnection() ){
-		               toastMsg( getTrans("Not connected to internet",'no_connection') );	
+		               toastMsg( getTrans("No conectado a internet",'no_connection') );
 		               return;
 	                }
 					
@@ -468,7 +468,7 @@ document.addEventListener("init", function(event) {
 			 break;
 			 
 			case "taskDetails":
-			  $(".toolbar-title").html( getTrans("Getting info...",'getting_info')  );
+			  $(".toolbar-title").html( getTrans("Obteniendo información...",'getting_info')  );
 			  task_id =  page.data.task_id ;
 			  callAjax("TaskDetails",'task_id=' + task_id);
 			break;
@@ -482,7 +482,7 @@ document.addEventListener("init", function(event) {
 			  status_raw = page.data.status_raw;
 			  if ( status_raw=="cancelled" || status_raw=="successful" || status_raw=="failed"){	  	  	  
 		  	  	  $(".add_notes_wrapper").hide();	  	
-		  	  	  $(".toolbar-title-notes").html( getTrans("View Notes",'view_notes') );  	  
+		  	  	  $(".toolbar-title-notes").html( getTrans("Ver notas",'view_notes') );
 		  	  }	  	
 		  	  
 		  	  callAjax("loadNotes","task_id="+task_id);
@@ -491,7 +491,7 @@ document.addEventListener("init", function(event) {
 			 
 		
 			case "viewTaskDescription":	
-			  $(".toolbar-title").html( getTrans("Getting info...",'getting_info')  );			  
+			  $(".toolbar-title").html( getTrans("Obteniendo información...",'getting_info')  );
 			  task_id =  page.data.task_id ;
 			  callAjax("viewTaskDescription",'task_id=' + task_id);
 			break;
@@ -530,9 +530,9 @@ function autoLogin()
 function exitKApp()
 {
 	ons.notification.confirm({
-	  message: getTrans("Are you sure to close the app?","close_app") ,	  
+	  message: getTrans("¿Estás seguro de cerrar la aplicación??","close_app") ,
 	  title: dialog_title_default ,
-	  buttonLabels: [ "Yes" ,  "No" ],
+	  buttonLabels: [ "Si" ,  "No" ],
 	  animation: 'default', // or 'none'
 	  primaryButtonIndex: 1,
 	  cancelable: true,
@@ -569,7 +569,7 @@ function callAjax(action,params)
 	dump("action=>"+action);	
 	
 	if ( !hasConnection() ){
-		toastMsg( getTrans("Not connected to internet",'no_connection') );	
+		toastMsg( getTrans("No conectado a internet",'no_connection') );
 		return;
 	}
 	
@@ -639,12 +639,12 @@ function callAjax(action,params)
 		   			
 		   			case "ChangeDutyStatus":
 		   			  if ( data.details==1){
-		   			     $(".duty_status").html( getTrans("On-Duty",'on_duty') );
-		   			     $(".duty_status2").html( getTrans("On-Duty",'on_duty') );
+		   			     $(".duty_status").html( getTrans("De servicio",'on_duty') );
+		   			     $(".duty_status2").html( getTrans("De servicio",'on_duty') );
 		   			     setStorage("kr_on_duty",1);
 		   			  } else {
-		   			  	 $(".duty_status").html( getTrans("Off-duty",'off_duty')  );
-		   			  	 $(".duty_status2").html( getTrans("Off-duty",'off_duty')  );
+		   			  	 $(".duty_status").html( getTrans("fuera de servicio",'off_duty')  );
+		   			  	 $(".duty_status2").html( getTrans("fuera de servicio",'off_duty')  );
 		   			  	 setStorage("kr_on_duty",2);
 		   			  }
 		   			break;
@@ -918,7 +918,7 @@ function callAjax(action,params)
 				  	 	     $(".receive_by").hide();
 	  	 	             }
 		   			  } else {
-		   			  	 $(".toolbar-title-signature").html( getTrans("Add Signature",'add_signature') );
+		   			  	 $(".toolbar-title-signature").html( getTrans("Añadir firma",'add_signature') );
 	  	 	             $(".signature-action").show();	
 	  	 	             $(".receive_by").show();  	 	               
 	  	 	             $sigdiv = $("#signature-pan") ;
@@ -1049,7 +1049,7 @@ function callAjax(action,params)
 				break;
 												
 				default:
-				toastMsg( getTrans("Network error has occurred please try again!",'network_error') );		
+				toastMsg( getTrans("Se ha producido un error de red. Vuelve a intentar!",'network_error') );
 				break;
 			}
 		}
@@ -1060,7 +1060,7 @@ function AjaxTask(action, params , done)
 {
 	dump('AjaxTask');
 	if ( !hasConnection() ){
-		toastMsg( getTrans("Not connected to internet","no_connection") );
+		toastMsg( getTrans("No conectado a internet","no_connection") );
 		done();
 		return;
 	}
@@ -1213,7 +1213,7 @@ function getCurrentPosition()
 	     if(!empty(lastUpdateTime)){	     	 
 	     	 var freq_time = now.getTime() - lastUpdateTime.getTime();	 
 	     	 if ( freq_time <  minFrequency ) {
-	     	 	 dump("Ignoring position update");
+	     	 	 dump("Ignorando la actualización de posición");
 	     	 	 return ;
 	     	 }
 	     }
@@ -1234,7 +1234,7 @@ function getCurrentPosition()
 	     callAjax2('updateDriverLocation', params);
 	     
 	 },function(error) {
-	 	 dump('error position');
+	 	 dump('posición  error');
 	 	 navigator.geolocation.clearWatch(watchID);
 	 },
 	   { timeout: 10000, enableHighAccuracy : getLocationAccuracy() } 
@@ -1326,41 +1326,41 @@ function swicthButtonAction( task_id, status_raw )
 		case "unassigned":
 		action='acknowledged';
 		html+='<p><ons-button modifier="large yellow-button"';
-		html+='onclick="changeTaskStatus('+task_id+','+ "'"+action+"'" +' )" > '+ getTrans("Accept",'accept') +' </ons-button></p>';
+		html+='onclick="changeTaskStatus('+task_id+','+ "'"+action+"'" +' )" > '+ getTrans("Aceptar",'accept') +' </ons-button></p>';
 		
 		action='declined';
 		html+='<p><ons-button modifier="quiet"';
-		html+='onclick="declinedTask('+task_id+','+ "'"+action+"'" +' )" >'+ getTrans("Decline",'decline') +'</ons-button></p>';
+		html+='onclick="declinedTask('+task_id+','+ "'"+action+"'" +' )" >'+ getTrans("Rechazar",'decline') +'</ons-button></p>';
 		break;
 		
 		case "acknowledged":
 		action='started';
 		html+='<p><ons-button modifier="large yellow-button"';
-		html+='onclick="changeTaskStatus('+task_id+','+ "'"+action+"'" +' )" >'+ getTrans('Start','start') +'</ons-button></p>';
+		html+='onclick="changeTaskStatus('+task_id+','+ "'"+action+"'" +' )" >'+ getTrans('Iniciar','start') +'</ons-button></p>';
 		
 		action='cancelled';
 		html+='<p><ons-button modifier="quiet"';
-		html+='onclick="ShowAddReason('+task_id+','+ "'"+action+"'" +' )" >'+ getTrans('Cancel','cancel') +'</ons-button></p>';
+		html+='onclick="ShowAddReason('+task_id+','+ "'"+action+"'" +' )" >'+ getTrans('Cancelar','cancel') +'</ons-button></p>';
 		break;
 		
 		case "started":
 		action='inprogress';
 		html+='<p><ons-button modifier="large yellow-button"';
-		html+='onclick="changeTaskStatus('+task_id+','+ "'"+action+"'" +' )" >'+getTrans('Arrived','arrived')+'</ons-button></p>';
+		html+='onclick="changeTaskStatus('+task_id+','+ "'"+action+"'" +' )" >'+getTrans('Llegado','arrived')+'</ons-button></p>';
 		
 		action='cancelled';
 		html+='<p><ons-button modifier="quiet"';
-		html+='onclick="ShowAddReason('+task_id+','+ "'"+action+"'" +' )" >'+getTrans('Cancel','cancel')+'</ons-button></p>';
+		html+='onclick="ShowAddReason('+task_id+','+ "'"+action+"'" +' )" >'+getTrans('Cancelar','cancel')+'</ons-button></p>';
 		break;
 		
 		case "inprogress":
 		action='successful';
 		html+='<p><ons-button modifier="large yellow-button"';
-		html+='onclick="changeTaskStatus('+task_id+','+ "'"+action+"'" +' )" >'+getTrans('Successful','successful')+'</ons-button></p>';
+		html+='onclick="changeTaskStatus('+task_id+','+ "'"+action+"'" +' )" >'+getTrans('Exitoso','successful')+'</ons-button></p>';
 		
 		action='failed';
 		html+='<p><ons-button modifier="quiet"';
-		html+='onclick="ShowAddReason('+task_id+','+ "'"+action+"'" +' )" >'+getTrans('Failed','failed')+'</ons-button></p>';
+		html+='onclick="ShowAddReason('+task_id+','+ "'"+action+"'" +' )" >'+getTrans('Fallido','failed')+'</ons-button></p>';
 		break;
 		
 		case "successful":
@@ -1424,8 +1424,8 @@ function declinedTask( task_id , status_raw )
 	dump(status_raw);
 	ons.notification.confirm({
 		title:dialog_title_default,
-		message:"Are you sure?",
-		buttonLabels: ['No', 'Yes'],
+		message:"Estas seguro?",
+		buttonLabels: ['No', 'Si'],
 	})
 	.then(
       function(answer) {
@@ -1440,7 +1440,7 @@ function declinedTask( task_id , status_raw )
 function AddReasonTask()
 {	
 	if ( $("#reason").val()==""){
-		onsenAlert("Reason is required");
+		onsenAlert("Se requiere razón");
 		return;
 	}
 	var task_id=$("#reason_task_id").val();
@@ -1601,9 +1601,9 @@ function Logout()
 {	
 	popover.hide();	
 	
-	ons.notification.confirm( getTrans("Are you sure you want to logout?","logout_confirm") ,{
+	ons.notification.confirm( getTrans("¿Estás seguro de que quieres cerrar sesión??","logout_confirm") ,{
 		title: dialog_title_default,
-		buttonLabels : [ getTrans("No","no") , getTrans("Yes","yes") ]
+		buttonLabels : [ getTrans("No","no") , getTrans("Si","yes") ]
 	}).then(function(input) {		
 		if (input==1){
 			
@@ -1808,7 +1808,7 @@ function checkGPS()
 	 				
 	 		}	 		
 	 	}, function(error){
-		   toastMsg("The following error occurred: "+error);
+		   toastMsg("El siguiente error ha ocurrido: "+error);
 		});
 	 	
 	 } else {
@@ -3192,18 +3192,18 @@ setDuty  = function(options){
      if(options==2){
      	 if(is_duty==2){
 	     	onduty2.checked=true;
-		  	$(".duty_status2").html( getTrans("On-Duty",'on_duty') );		  		     	
+		  	$(".duty_status2").html( getTrans("En servicio",'on_duty') );
 	     } else {
 	     	onduty2.checked=false;
-		    $(".duty_status2").html( getTrans("Off-duty",'off_duty')  );
+		    $(".duty_status2").html( getTrans("Fuera de servicio",'off_duty')  );
 	     }
      } else {
 	     if(is_duty==2){
 	     	onduty.checked=true;
-		  	$(".duty_status").html( getTrans("On-Duty",'on_duty') );		  		     	
+		  	$(".duty_status").html( getTrans("En servicio",'on_duty') );
 	     } else {
 	     	onduty.checked=false;
-		    $(".duty_status").html( getTrans("Off-duty",'off_duty')  );
+		    $(".duty_status").html( getTrans("Fuera de servicio",'off_duty')  );
 	     }
      }
 };

@@ -304,7 +304,7 @@ function TaskDetailsChevron_3( data )
              html+='<ons-icon icon="ion-ios-albums-outline" size="20px"></ons-icon>';
              html+='</div>';
              html+='<div class="col">';
-             html+='<b>'+ getTrans("Task History",'task_history') +'</b>';
+             html+='<b>'+ getTrans("Historial de tareas",'task_history') +'</b>';
              html+='<div class="top10"></div>';
              
              $.each( data, function( key, val ) { 
@@ -410,7 +410,7 @@ function OrderDetails(data)
              html+='<ons-icon icon="ion-coffee" size="20px"></ons-icon>';
              html+='</div>';
              html+='<div class="col">';
-             html+='<b>' + getTrans("View Order Details","view_order_details") + '</b>';             
+             html+='<b>' + getTrans("Ver detalles de la orden","view_order_details") + '</b>';
              html+='</div>';
           html+='</div> ';
     html+='</ons-col>';
@@ -446,9 +446,9 @@ function formatOrderDetails(data , data2 )
 	
 	var item='';
 	
-	item+='<p><b>'+ getTrans("Order No","order_no") + " :" + data.order_info.order_id+'</b></p>'
+	item+='<p><b>'+ getTrans("N º de pedido","order_no") + " :" + data.order_info.order_id+'</b></p>'
 	if (data.order_info.order_change>0){
-	item+='<p>'+ getTrans("Change","change") + " :" + prettyPrice(data.order_info.order_change)+'</p>'
+	item+='<p>'+ getTrans("Cambio","change") + " :" + prettyPrice(data.order_info.order_change)+'</p>'
 	}
 		
 	if (data2.length>0){
@@ -479,7 +479,7 @@ function formatOrderDetails(data , data2 )
 	   	   
 	   	   /*ingredients*/
 	   	   if (val.ingredients.length>0){	
-	   	   	   item+= '<p class="indent top10"><b>'+ getTrans("Ingredients","ingredients")  +'</b></p>';
+	   	   	   item+= '<p class="indent top10"><b>'+ getTrans("Ingredientes","ingredients")  +'</b></p>';
 	   	   	   $.each( val.ingredients, function( key_ing, val_ing ) {     
 	   	   	   	    item+= '<p class="indent">'+val_ing+'</p>';
 	   	   	   });
