@@ -7,9 +7,9 @@
     version   = "1.9">
     <name>TuBoxv1</name>
     <description>
-		TuBox Empresas
+		TuBox Mensajeros
     </description>
-    <author email="info@itaas.com.co" href="http://itaas.com.co">
+    <author email="tubox@itaas.com.co" href="http://itaas.com.co">
         Itaas.com.co
     </author>             
     <content src="index.html" />
@@ -63,7 +63,7 @@
     <preference name="phonegap-version" value="cli-8.1.1" />
     
     <preference name="android-minSdkVersion" value="19" />
-    <preference name="android-targetSdkVersion" value="28" />
+    <preference name="android-targetSdkVersion" value="29" />
     <preference name="DisallowOverscroll" value="true" />
     
      <platform name="ios">    
