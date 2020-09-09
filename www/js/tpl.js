@@ -3,7 +3,7 @@ function callAjax2(action,params)
 	dump("action=>"+action);	
 	
 	if ( !hasConnection() ){
-		toastMsg( getTrans("Not connected to internet",'no_connection') );		
+		toastMsg( getTrans("No estas conectado a internet",'no_connection') );		
 		return;
 	}
 	
@@ -236,7 +236,7 @@ function TaskDetailsChevron_2(data )
              html+='<ons-icon icon="ion-ios-list-outline" size="20px"></ons-icon>';
              html+='</div>';
              html+='<div class="col">';
-             html+='<b>' + getTrans("Task Description","task_description") + '</b>';
+             html+='<b>' + getTrans("Description de la tarea","task_description") + '</b>';
              html+='<p class="concat-text">'+data.task_description+'</p>';
              html+='</div>';
           html+='</div> ';
@@ -311,7 +311,7 @@ function TaskDetailsChevron_3( data )
                 html+='<div class="table  equal-col">';
                 
                    html+='<div class="col col-1">';
-                   html+=val.status + " "+ getTrans("at","at");
+                   html+=val.status + " "+ getTrans("a las","at");
                    html+='</div>';
                    
                    html+='<div class="col col-2">';
@@ -746,7 +746,7 @@ function addPhotoChevron(data)
 	             html+='</div>';
 	             html+='<div class="col">';      
 	             
-	             html+='<b>'+ getTrans("Add Photo",'add_photo') +'</b>'; 	             
+	             html+='<b>'+ getTrans("Agregar",'add_photo') +'</b>'; 	             
 	             
 	             html+='</div>';
 	          html+='</div> ';
