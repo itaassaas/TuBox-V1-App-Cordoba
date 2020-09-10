@@ -236,7 +236,7 @@ function TaskDetailsChevron_2(data )
              html+='<ons-icon icon="ion-ios-list-outline" size="20px"></ons-icon>';
              html+='</div>';
              html+='<div class="col">';
-             html+='<b>' + getTrans("Description de la tarea","task_description") + '</b>';
+             html+='<b>' + getTrans("Descripsion de la tarea","task_description") + '</b>';
              html+='<p class="concat-text">'+data.task_description+'</p>';
              html+='</div>';
           html+='</div> ';
@@ -271,9 +271,9 @@ function TaskAddSignature( data )
              html+='</div>';
              html+='<div class="col">';
              if (data.status=="inprogress"){
-                 html+='<b>'+ getTrans("Add Signature",'add_signature') +'</b>';  
+                 html+='<b>'+ getTrans("Agregar firma",'add_signature') +'</b>';  
              } else {
-             	 html+='<b>'+ getTrans("View Signature",'view_signature') +'</b>';  
+             	 html+='<b>'+ getTrans("Ver firma",'view_signature') +'</b>';  
              }           
              html+='</div>';
           html+='</div> ';
@@ -311,7 +311,7 @@ function TaskDetailsChevron_3( data )
                 html+='<div class="table  equal-col">';
                 
                    html+='<div class="col col-1">';
-                   html+=val.status + " "+ getTrans("a las","at");
+                   html+=val.status + " "+ getTrans("el ","at");
                    html+='</div>';
                    
                    html+='<div class="col col-2">';
@@ -953,7 +953,7 @@ function gridPhoto(data , status_raw)
       $("#list-photos").html(html);    
       imageLoaded('.img_loader'); 
    } else {
-   	 dump('no photo');   	 
+   	 dump('Sin foto');   	 
    }
 }
 

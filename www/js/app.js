@@ -903,7 +903,7 @@ function callAjax(action,params)
 		   			
 		   			case "loadSignature":
 		   			  if (data.details.status=="successful"){
-		   			  	 $(".toolbar-title-signature").html( getTrans("View Signature",'view_signature') );
+		   			  	 $(".toolbar-title-signature").html( getTrans("Ver Firma",'view_signature') );
 	  	 	             $(".signature-action").hide();
 	  	 	             if (!empty(data.details.data)){
 	  	 	             	
