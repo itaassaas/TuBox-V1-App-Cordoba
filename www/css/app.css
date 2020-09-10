@@ -120,7 +120,7 @@ font-family: 'Open Sans',sans-serif;
 {
 display:block;
 margin:auto;
-max-width:50%;
+max-width:30%;
 }
 
 .auto-login-wrap{
@@ -413,7 +413,7 @@ text-transform:capitalize;
 background:#fc8344;
 }
 .tag-status.acknowledged  {
-background:#33a17e;
+background:#3ca133;
 }
 .tag-status.started {
 background:#ba68c8;
@@ -631,14 +631,14 @@ color:#fff;
 .checkbox--yellow-button .checkbox--material__input:checked + .checkbox--material__checkmark::before,
 .navigation-bar--yellow-toolbar
 {
-background:#fbd106;
+background:#19FF00;
 }
 
 
 .button--yellow-button-quiet,
 .button--yellow-button-quiet:active
 {
-color:#fbd106;
+color:#19FF00;
 }
 
 .tab-bar--yellow-tab{
@@ -654,9 +654,9 @@ background-color:#38323a;
 }
 
 .logo-k{
-margin-left: 15px;
+margin-left: 10px;
 position: absolute;
-top: 25%;
+top: 10%;
 }
 .notes_fields{
  width: 100%;
