@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es">
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="lib/onsen/css/onsenui.css"/>
@@ -8,36 +8,26 @@
     <link rel="stylesheet" href="css/app.css?ver=1.0">
     	
 	
-	<link rel="stylesheet" href="lib/fullcalendar/fullcalendar.css"/>	
-	        
-    <script src="lib/angular/angular.js"></script>
-    <script src="lib/onsen/js/onsenui.js"></script> 
-    <script src="lib/jquery-1.11.3.min.js"></script>
+	<link rel="stylesheet" href="lib/fullcalendar/core/main.css"/>	
+	<link rel="stylesheet" href="lib/fullcalendar/daygrid/main.css"/>	
+	            
+    <script src="lib/onsen/js/onsenui.js"></script>     
+    <script src="lib/jquery-v3.4.1.js"></script>
     <script type="text/javascript" src="cordova.js"></script>
                
     
     <script src="lib/jquery.translate.js"></script>
-    <script src="lib/imagesloaded.pkgd.min.js"></script>
-    <script src="js/jquery.geocomplete.min.js"></script>
+    <script src="lib/imagesloaded.pkgd.min.js"></script>    
     
     <script src="lib/jsignature/jSignature.min.js"></script>   
-    <script src="lib/fullcalendar/moment.min.js"></script>
-    <script src="lib/fullcalendar/fullcalendar.min.js"></script>
+    
+    <script src="lib/moment.js"></script>
+    <script src="lib/fullcalendar/core/main.js"></script>
+    <script src="lib/fullcalendar/daygrid/main.js"></script>
+    
     <script src="lib/validate.min.js"></script>
-    
-    
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyAM3osD-eh93qpTDYHnrXLZd94_PDpsXJQ"></script>
-   <script src="lib/gmaps.js?version=1.0.0"></script>
-   
-   <script src="lib/leaflet/leaflet.js"></script>
-   <link href="lib/leaflet/leaflet.css" rel="stylesheet" type="text/css" />
-   
-   <script src="lib/leaflet/plugin/routing/leaflet-routing-machine.min.js"></script>
-   <link href="lib/leaflet/plugin/routing/leaflet-routing-machine.css" rel="stylesheet" type="text/css" />
-    
-    <script src="js/config.js?ver=1.0"></script>
-    <script src="js/kgmaps.js?ver=1.0"></script> 
-    <script src="js/kmapbox.js?ver=1.0"></script> 
+                
+    <script src="js/config.js?ver=1.0"></script>    
     <script src="js/tpl.js?ver=1.0"></script>    
     <script src="js/app.js?ver=1.0"></script>        
              
@@ -55,7 +45,7 @@
       <ons-page id="pageGetSettings" modifier="login-page" >
       
           <div class="loading-getsettings">
-	           <img class="tam_logo" src="images/logo.png" alt="" title="">
+	           <img src="images/logo.png" alt="" title="">
 	           <p>
 	           <span class="trn loading_settings" data-trn-key="loading_settings" >
 	           Loading Settings</span> ...
@@ -74,7 +64,7 @@
       <ons-page id="pageLogin" modifier="login-page" ng-device-backbutton="closeApp()" >
              
        <div class="home-header login-header">
-          <span class="trn" data-trn-key="signin" >Registrarse</span>
+          <span class="trn" data-trn-key="signin" >Sign In</span>
        </div> 
        
        <div class="inner">
@@ -82,12 +72,12 @@
        
            <p class="field-wrap">
            <ons-input type="text" name="username"            
-           modifier="underbar" placeholder="Username" data-trn-key="username" float></ons-input>
+           modifier="underbar" class="username_field" placeholder="Username" data-trn-key="username" float></ons-input>
            </p>
                                  
            <p class="field-wrap">
            <ons-input type="password" name="password" modifier="underbar" 
-           placeholder="Password" data-trn-key="password" float ></ons-input>
+           placeholder="Password" data-trn-key="password" float class="password_field" ></ons-input>
            </p>
            
            <p class="text-left">     
@@ -97,7 +87,7 @@
                   <ons-checkbox input-id="remember" name="remember" checked ></ons-checkbox>
                 </ons-col>  
                 <ons-col>
-                  <span class="trn" data-trn-key="remember_me" >Recuérdame</span>
+                  <span class="trn" data-trn-key="remember_me" >Remember me</span>
                 </ons-col>  
               </ons-row>
            </p>
@@ -105,12 +95,12 @@
            <p class="text-left"">
             <ons-if platform="android">
 	           <ons-button modifier="large yellow-button" onclick="login()" >
-	           <span class="trn" data-trn-key="signin">Registrarse</span>
+	           <span class="trn" data-trn-key="signin">Sign In</span>
 	           </ons-button>          
 	        </ons-if>
 	        <ons-if platform="ios other">
 	           <ons-button modifier="large green-button" onclick="login()" >
-	           <span class="trn" data-trn-key="signin">Registrarse</span>
+	           <span class="trn" data-trn-key="signin">Sign In</span>
 	           </ons-button>          
 	        </ons-if>
            </p>              
@@ -118,13 +108,13 @@
            <p class="text-left">
             <ons-if platform="android">
               <ons-button modifier="quiet yellow-button-quiet" onclick="showPage('forgotpass.html');">
-                <span class="trn" data-trn-key="forgot_password" >¿Se te olvidó tu contraseña?</span>
+                <span class="trn" data-trn-key="forgot_password" >Forgot Password?</span>
               </ons-button>
             </ons-if>
             
             <ons-if platform="ios other">
               <ons-button modifier="quiet" onclick="showPage('forgotpass.html');">
-                <span class="trn white-text" data-trn-key="forgot_password" >¿Se te olvidó tu contraseña?</span>
+                <span class="trn white-text" data-trn-key="forgot_password" >Forgot Password?</span>
               </ons-button>
             </ons-if>
                         
@@ -135,7 +125,7 @@
            <div class="auto-login-wrap">
 	           <img src="images/logo.png" alt="" title="">
 	           <p>
-	           <span class="trn" data-trn-key="login_in" >Iniciando sesión ...</span> ...
+	           <span class="trn" data-trn-key="login_in" >Loggin in</span> ...
 	           </p>
            </div>
                  
@@ -153,14 +143,14 @@
        </ons-toolbar>
     
        <div class="home-header">
-          <span class="trn" data-trn-key="forgot_password">Se te olvidó tu contraseña</span>
+          <span class="trn" data-trn-key="forgot_password">Forgot Password</span>
        </div> 
                      
        <div class="inner">   
        
          <p class="text-left field-wrap">
            <span class="trn" data-trn-key="enter_your_email">
-           Ingrese su dirección de correo electrónico y le enviaremos un código para restablecer su contraseña
+           Enter your email address and we'll send you a code to reset your password
            </span>
          </p>  
        
@@ -173,13 +163,13 @@
           <p class="text-left"">
             <ons-if platform="android">  
              <ons-button modifier="large yellow-button" onclick="forgotPass()"  >
-              <span class="trn" data-trn-key="submit" >Enviar</span>
+              <span class="trn" data-trn-key="submit" >Submit</span>
              </ons-button>
             </ons-if>
             
             <ons-if platform="ios other">
              <ons-button modifier="large green-button" onclick="forgotPass()"  >
-              <span class="trn" data-trn-key="submit" >Enviar</span>
+              <span class="trn" data-trn-key="submit" >Submit</span>
              </ons-button>
             </ons-if>
             
@@ -190,13 +180,13 @@
           
             <ons-if platform="android">
 		        <ons-button modifier="quiet yellow-button-quiet" onclick="showChangePassword()">
-		        <span class="trn" data-trn-key="already_have_password" >¿Ya tienes código de contraseña?</span>
+		        <span class="trn" data-trn-key="already_have_password" >Already have Password Code?</span>
 		        </ons-button>
             </ons-if>
             
             <ons-if platform="ios other">
 		        <ons-button modifier="quiet" onclick="showChangePassword()">
-		        <span class="trn white-text" data-trn-key="already_have_password" >¿Ya tienes código de contraseña?</span>
+		        <span class="trn white-text" data-trn-key="already_have_password" >Already have Password Code?</span>
 		        </ons-button>
             </ons-if>
             
@@ -229,7 +219,7 @@
            
            <p class="text-left"">
            <ons-button modifier="large yellow-button" onclick="changePassword()" >
-           <span class="trn" data-trn-key="submit">Enviar</span>
+           <span class="trn" data-trn-key="submit">Submit</span>
            </ons-button>          
            </p>       
            
@@ -275,7 +265,7 @@
 		    <div class="tabbar__icon">
 		      <ons-icon icon="md-view-day"></ons-icon>
 		    </div>
-		    <div class="tabbar__label trn" data-trn-key="pending_task" >Tarea pendiente</div>
+		    <div class="tabbar__label trn" data-trn-key="pending_task" >Pending Task</div>    
 		  </button>
 		 </ons-tab>
 		 
@@ -285,7 +275,7 @@
 		    <div class="tabbar__icon">
 		      <ons-icon icon="md-view-web"></ons-icon>
 		    </div>
-		    <div class="tabbar__label trn" data-trn-key="completed_task" >Tarea completada</div>
+		    <div class="tabbar__label trn" data-trn-key="completed_task" >Completed Task</div>    
 		  </button>
 		 </ons-tab> 
 	  
@@ -298,15 +288,15 @@
 	<ons-popover direction="left" id="popover" cancelable >	  
 	  <ons-list>	    
 	    <ons-list-item modifier="normal-menu" tappable onclick="showPage('profilePage.html',1)" >
-	    <span class="trn" data-trn-key="profile" >Perfil</span>
+	    <span class="trn" data-trn-key="profile" >Profile</span>
 	    </ons-list-item>
 	    
 	    <ons-list-item modifier="normal-menu" onclick="showPage('SettingPage.html',1)"  tappable>
-	    <span class="trn" data-trn-key="settings">Configuraciones</span>
+	    <span class="trn" data-trn-key="settings">Settings</span>
 	    </ons-list-item>
 	    
 	    <ons-list-item modifier="normal-menu" tappable onclick="Logout()">
-	    <span class="trn" data-trn-key="logout">Cerrar sesión</span>
+	    <span class="trn" data-trn-key="logout">Logout</span>
 	    </ons-list-item>
 	    
 	  </ons-list>	  
@@ -358,11 +348,11 @@
         <div class="inner">
            <p class="field-wrap">
              <ons-input type="text" id="reason" name="reason"            
-              modifier="underbar" placeholder="Añadir razon"  data-trn-key="add_reason"  float></ons-input>
+              modifier="underbar" placeholder="Add a reason..."  data-trn-key="add_reason"  float></ons-input>
            </p>           
            <p class="text-left"">
            <ons-button modifier="large yellow-button" onclick="AddReasonTask()" >
-            <span class="trn" data-trn-key="submit" >Enviar</span>
+            <span class="trn" data-trn-key="submit" >Submit</span>
            </ons-button>          
            </p>       
            
@@ -396,13 +386,13 @@
           
          <p class="signature-action">
            <ons-button modifier="large yellow-button" onclick="AddSignatureToTask()" >
-            <span class="trn" data-trn-key="done" >Hecho</span>
+            <span class="trn" data-trn-key="done" >Done</span>
            </ons-button>          
          </p>
                   
          <p class="signature-action">
          <ons-button modifier="quiet" onclick="resetSignature();">
-           <span class="trn" data-trn-key="reset" >Reiniciar</span>
+           <span class="trn" data-trn-key="reset" >Reset</span>
          </ons-button>
          </p>
        </div>
@@ -417,7 +407,7 @@
 		
        <ons-toolbar modifier="ktransparent-toolbar">        
          <div class="left"><ons-back-button></ons-back-button></div>          
-         <div class="center toolbar-title-calendar trn"  data-trn-key="calendar_view" >Vista de calendario</div>
+         <div class="center toolbar-title-calendar trn"  data-trn-key="calendar_view" >Calendar View</div>
        </ons-toolbar>
        
        <div class="inner">     
@@ -433,7 +423,7 @@
        <ons-toolbar modifier="toolbar-noshadow">        
          <div class="left"><ons-back-button></ons-back-button></div>          
          <div class="center toolbar-title-profile">
-         <span class="trn" data-trn-key="profile" >Perfil</span>
+         <span class="trn" data-trn-key="profile" >Profile</span>
          </div>
        </ons-toolbar>
        
@@ -477,7 +467,7 @@
            <div class="table">
              <div class="col a border"><ons-icon icon="ion-android-contacts" size="30px"></ons-icon></div>
              <div class="col border"> 
-               <b class="trn" data-trn-key="team" >Equipo</b>
+               <b class="trn" data-trn-key="team" >Team</b>
                <p class="team-name"></p>
              </div>
            </div>
@@ -485,7 +475,7 @@
            <div class="table top10">
              <div class="col a border"><ons-icon icon="ion-android-contact" size="30px"></ons-icon></div>
              <div class="col border"> 
-               <b class="trn" data-trn-key="name">Nombre</b>
+               <b class="trn" data-trn-key="name">Name</b>
                <p class="driver-fullname"></p>
              </div>
            </div>
@@ -501,7 +491,7 @@
             <div class="table top10">
              <div class="col a border"><ons-icon icon="ion-ios-telephone-outline" size="30px"></ons-icon></div>
              <div class="col border"> 
-               <b class="trn" data-trn-key="contact" >Contacto</b>
+               <b class="trn" data-trn-key="contact" >Contact</b>
                <p>
                <ons-input type="text" name="phone" class="phone" modifier="underbar"></ons-input>
                </p>
@@ -514,7 +504,7 @@
     
       <ons-bottom-toolbar class="button-toolbar-action2"> 
          <ons-button modifier="large yellow-button" onclick="UpdateForms('frm-profile','UpdateProfile')" >
-         <span class="trn" data-trn-key="update_profile" >Actualización del perfil</span>
+         <span class="trn" data-trn-key="update_profile" >Update Profile</span>
          </ons-button>         
       </ons-bottom-toolbar>
       
@@ -532,7 +522,7 @@
            <div class="table">
              <div class="col a border"><ons-icon icon="ion-android-car" size="30px"></ons-icon></div>
              <div class="col border"> 
-               <b class="trn" data-trn-key="type" >Tipo</b>
+               <b class="trn" data-trn-key="type" >Type</b>
                <ons-list>
                    <ons-list-item  >
                    <!--<span class="transport_type_id2"></span>-->
@@ -547,7 +537,7 @@
            <div class="table with-car">
              <div class="col a border"></div>
              <div class="col border"> 
-               <b class="trn" data-trn-key="description" >Descripción</b>
+               <b class="trn" data-trn-key="description" >Description</b>
                <p><ons-input type="text" name="transport_description" class="transport_description" modifier="underbar"></ons-input></p>  
              </div>
            </div>
@@ -555,7 +545,7 @@
            <div class="table with-car top10">
              <div class="col a border"></div>
              <div class="col border"> 
-               <b class="trn" data-trn-key="license_plate">Placa</b>
+               <b class="trn" data-trn-key="license_plate">License Plate</b>
                <p><ons-input type="text" name="licence_plate" class="licence_plate" modifier="underbar"></ons-input></p>  
              </div>
            </div>
@@ -573,7 +563,7 @@
       
        <ons-bottom-toolbar class="button-toolbar-action2"> 
          <ons-button modifier="large yellow-button" onclick="UpdateForms('frm-vehicle','UpdateVehicle')" >
-         <span class="trn" data-trn-key="update_vehicle" >Actualizar vehículo</span>
+         <span class="trn" data-trn-key="update_vehicle" >Update Vehicle</span>
          </ons-button>         
       </ons-bottom-toolbar>
     
@@ -590,7 +580,7 @@
            <div class="table">
              <div class="col a border"><ons-icon icon="ion-locked" size="30px"></ons-icon></div>
              <div class="col border"> 
-               <b class="trn" data-trn-key="current_password">contraseña actual</b>
+               <b class="trn" data-trn-key="current_password">Current Password</b>
                <p><ons-input type="password" name="current_pass" modifier="underbar"></ons-input></p> 
              </div>
            </div>
@@ -598,7 +588,7 @@
           <div class="table top10">
              <div class="col a border"><ons-icon icon="ion-ios-locked-outline" size="30px"></ons-icon></div>
              <div class="col border"> 
-               <b class="trn" data-trn-key="new_password">Nueva contraseña</b>
+               <b class="trn" data-trn-key="new_password">New Password</b>
                <p><ons-input type="password" name="new_pass" modifier="underbar"></ons-input></p> 
              </div>
            </div>
@@ -606,7 +596,7 @@
            <div class="table top10">
              <div class="col a border"><ons-icon icon="ion-ios-unlocked" size="30px"></ons-icon></div>
              <div class="col border"> 
-               <b class="trn" data-trn-key="confirm_password" >Confirmar contraseña</b>
+               <b class="trn" data-trn-key="confirm_password" >Confirm Password</b>
                <p><ons-input type="password" name="confirm_pass" modifier="underbar"></ons-input></p> 
              </div>
            </div>
@@ -616,7 +606,7 @@
       
        <ons-bottom-toolbar class="button-toolbar-action2"> 
          <ons-button modifier="large yellow-button" onclick="UpdateForms('frm-changepassword','ProfileChangePassword')" >
-         <span class="trn" data-trn-key="change_password" >Cambia la contraseña</span>
+         <span class="trn" data-trn-key="change_password" >Change Password</span>
          </ons-button>         
       </ons-bottom-toolbar>
     
@@ -638,7 +628,7 @@
        <ons-toolbar modifier="ktransparent-toolbar">        
          <div class="left"><ons-back-button onclick="TransLatePage();"></ons-back-button></div>          
          <div class="center toolbar-title-settings">
-          <span class="trn" data-trn-key="settings" >Configuraciones</span>
+          <span class="trn" data-trn-key="settings" >Settings</span>
          </div>
        </ons-toolbar>
        
@@ -646,14 +636,14 @@
          <ons-list>
          
          
-           <ons-list-header class="top10 trn" data-trn-key="software_version" >Versión del software</ons-list-header>
+           <ons-list-header class="top10 trn" data-trn-key="software_version" >Software version</ons-list-header>            
             <ons-list-item modifier="settings-list" >		      
 		      <ons-row>
 		         <ons-col><span class="software_version concat-text"></span></ons-col>
 		      </ons-row>
 		    </ons-list-item>
             
-            <ons-list-header class="trn" data-trn-key="device_id" >ID del dispositivo</ons-list-header>
+            <ons-list-header class="trn" data-trn-key="device_id" >Device ID</ons-list-header>            
             <ons-list-item modifier="settings-list" >		      
 		      <ons-row>
 		         <ons-col><span class="device_id concat-text"></span></ons-col>
@@ -661,20 +651,20 @@
 		    </ons-list-item>
          
             <ons-list-header>
-             <span class="trn" data-trn-key="notifications" >Notificaciones</span>
+             <span class="trn" data-trn-key="notifications" >Notifications</span>
             </ons-list-header>            
             <ons-list-item modifier="settings-list">
 		      <div class="center">
-		        <span class="trn" data-trn-key="enabled_push" >Notificación Push habilitada</span>
+		        <span class="trn" data-trn-key="enabled_push" >Enabled Push Notification</span>
 		      </div>
 		      <div class="right">
 		        <ons-switch input-id="enabled_push" onchange="UpdatePush()"></ons-switch>
 		      </div>
 		    </ons-list-item>
 		    
-		    <ons-list-header class="top10 trn" data-trn-key="language"  >Idioma</ons-list-header>
+		    <ons-list-header class="top10 trn" data-trn-key="language"  >Language</ons-list-header>            
             <ons-list-item modifier="settings-list" tappable ripple onclick="ShowLanguageOption()" >
-		      <p><b class="trn" data-trn-key="select_language" >Seleccione el idioma</b></p>
+		      <p><b class="trn" data-trn-key="select_language" >Select Language</b></p>		      
 		      <div class="table">
 		        <div class="col">
 		          <span class="language_selected"></span>
@@ -704,7 +694,7 @@
        <ons-toolbar modifier="ktransparent-toolbar">        
          <div class="left"><ons-back-button></ons-back-button></div>          
          <div class="center toolbar-title-orderdetails">
-          <span class="trn" data-trn-key="order_details" >Detalles del pedido</span>
+          <span class="trn" data-trn-key="order_details" >Order Details</span>
          </div>
        </ons-toolbar>
        
@@ -721,11 +711,11 @@
        <ons-toolbar modifier="ktransparent-toolbar">        
          <div class="left"><ons-back-button></ons-back-button></div>          
          <div class="center toolbar-title-orderdetails">
-          <span class="trn" data-trn-key="notifications" >Notificaciones</span>
+          <span class="trn" data-trn-key="notifications" >Notifications</span>
          </div>
          <div class="right">           
            <ons-toolbar-button onclick="callAjax('clearNofications')">
-            <span class="trn" data-trn-key="clear" >Limpiar</span>
+            <span class="trn" data-trn-key="clear" >Clear</span>
           </ons-toolbar-button>
          </div>
        </ons-toolbar>
@@ -746,7 +736,7 @@
        <ons-toolbar modifier="ktransparent-toolbar">        
          <div class="left"><ons-back-button></ons-back-button></div>          
          <div class="center">
-          <span class="trn" data-trn-key="map">Mapa</span>
+          <span class="trn" data-trn-key="map">Map</span>
          </div>
          
          <div class="right">
@@ -778,7 +768,7 @@
        <ons-toolbar modifier="ktransparent-toolbar">        
          <div class="left"><ons-back-button></ons-back-button></div>          
          <div class="center toolbar-title-notes trn" data-trn-key="add_notes" >
-          Agregar Notas
+         Add Notes
          </div>
        </ons-toolbar>
 
@@ -816,11 +806,11 @@
       <ons-list>	    
       
 	    <ons-list-item modifier="normal-menu" tappable onclick="editNotes()" >
-	    <span class="trn" data-trn-key="edit" >Editar</span>
+	    <span class="trn" data-trn-key="edit" >Edit</span>
 	    </ons-list-item>
 	    	    
 	    <ons-list-item modifier="normal-menu" tappable onclick="deleteNotes()">
-	    <span class="trn" data-trn-key="delete">Borrar</span>
+	    <span class="trn" data-trn-key="delete">Delete</span>
 	    </ons-list-item>
 	    
 	  </ons-list>	  
@@ -840,7 +830,7 @@
            
            <p class="text-left"">
            <ons-button modifier="large" onclick="updateNotes()" >
-           <span class="trn" data-trn-key="submit">Enviar</span>
+           <span class="trn" data-trn-key="submit">Submit</span>
            </ons-button>          
            </p>       
            
@@ -864,12 +854,12 @@
       
 	    <ons-list-item modifier="normal-menu" tappable onclick="showCemara();" >
 	    <ons-icon icon="ion-ios-camera" size="25px"></ons-icon>
-	    <span style="margin-left:10px;"  class="trn" data-trn-key="take_picture" >Tomar la foto</span>
+	    <span style="margin-left:10px;"  class="trn" data-trn-key="take_picture" >Take Picture</span>
 	    </ons-list-item>
 	    
 	    <ons-list-item modifier="normal-menu" onclick="showDeviceGallery(2);"  tappable>
 	    <ons-icon icon="ion-image" size="20px"></ons-icon>
-	    <span style="margin-left:10px;" class="trn" data-trn-key="upload_picture">Subir foto</span>
+	    <span style="margin-left:10px;" class="trn" data-trn-key="upload_picture">Upload Picture</span>
 	    </ons-list-item>
 	    	    
 	  </ons-list>	  

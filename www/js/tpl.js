@@ -1,74 +1,52 @@
 function callAjax2(action,params)
 {
-	dump("action=>"+action);	
+	try {
+			
+	dump("callAjax2");
 	
-	if ( !hasConnection() ){
-		toastMsg( getTrans("No estas conectado a internet",'no_connection') );		
-		return;
-	}
+	params+=getParams();	
 	
-	params+="&lang_id="+getStorage("kr_lang_id");
-	if(!empty(krms_driver_config.APIHasKey)){
-		params+="&api_key="+krms_driver_config.APIHasKey;
-	}		
-	if ( !empty( getStorage("kr_token") )){		
-		params+="&token="+  getStorage("kr_token");
-	}
+    ajax_request2 = $.ajax({
+	  url: ajax_url+"/"+action,
+	  method: "post" ,
+	  data: params ,
+	  dataType: "json",
+	  timeout: ajax_timeout,
+	  crossDomain: true,
+	  beforeSend: function( xhr ) {
+	  	
+	  	 clearTimeout( timer[104] ); 
+	  	
+         if(ajax_request2 != null) {		   
+           ajax_request2.abort();
+		 } else {    				
+			timer[104] = setTimeout(function() {		
+         		if( ajax_request2 != null) {		
+				   ajax_request2.abort();				   
+         		}         		         		
+	        }, ajax_timeout ); 
+		 }
+      }
+    });
 	
-	dump(ajax_url+"/"+action+"?"+params);
+    ajax_request2.done(function( data ) {
+    	//
+    });
 	
-	ajax_request2 = $.ajax({
-		url: ajax_url+"/"+action, 
-		data: params,
-		type: 'post',                  
-		async: false,
-		dataType: 'jsonp',
-		timeout: 6000,
-		crossDomain: true,
-		 beforeSend: function() {
-			if(ajax_request2 != null) {			 	
-			   /*abort ajax*/
-			   hideAllModal();	
-	           ajax_request2.abort();
-			} else {    
-				/*show modal*/			   
-				//loader.show();			    
-			}
-		},
-		complete: function(data) {					
-			//ajax_request2=null;   	     				
-			ajax_request= (function () { return; })();
-			hideAllModal();		
-		},
-		success: function (data) {	
-			if (data.code==1){
-				switch (action)
-				{
-					//silent
-					case "updateDriverLocation":					
-					break;
-					
-					default:
-					break;
-				}
-			}
-		},
-		error: function (request,error) {	        
-		    hideAllModal();					
-			switch (action)
-			{
-				case "GetAppSettings":
-				case "getLanguageSettings":
-				case "registerMobile":
-				case "updateDriverLocation":
-				break;
-															
-				default:				
-				//onsenAlert( getTrans("Network error has occurred please try again!",'network_error') );		
-				break;
-			}
+	ajax_request2.always(function() {        
+        ajax_request2 = null;  
+    });	
+    
+    ajax_request2.fail(function( jqXHR, textStatus ) {    	
+    	$text = !empty(jqXHR.responseText)?jqXHR.responseText:'';
+		if(textStatus!="abort"){
+		   showToast( textStatus + "\n" + $text );             
 		}
-	});
+    });     
+    
+    } catch(err) {
+      showToast(err.message);
+    } 	
 }
 
 function formatTask(data)
@@ -204,7 +182,10 @@ function TaskDetailsChevron_1(data )
 		return '';
 	}
 	var html='';
-	html+='<ons-list-item tappable onclick="viewTaskMap('+data.task_id+', '+ "'" +data.task_lat +"'" +', '+ "'" +data.task_lng +"'" +', '+ "'" + data.delivery_address + "'" + ' )"  >';
+	/*html+='<ons-list-item tappable onclick="viewTaskMap('+data.task_id+', '+ "'" +data.task_lat +"'" +', '+ "'" +data.task_lng +"'" +', '+ "'" + data.delivery_address + "'" + ' )"  >';*/
+	
+	html+='<ons-list-item tappable onclick="mapExternalDirection('+ q(data.task_lat)+ "," + q(data.task_lng) +')"  >';
+	
      html+='<ons-col width="90%" >     ';            
          html+='<div class="table">';
              html+='<div class="col a">';
@@ -236,7 +217,7 @@ function TaskDetailsChevron_2(data )
              html+='<ons-icon icon="ion-ios-list-outline" size="20px"></ons-icon>';
              html+='</div>';
              html+='<div class="col">';
-             html+='<b>' + getTrans("Descripsion de la tarea","task_description") + '</b>';
+             html+='<b>' + getTrans("Task Description","task_description") + '</b>';
              html+='<p class="concat-text">'+data.task_description+'</p>';
              html+='</div>';
           html+='</div> ';
@@ -271,9 +252,9 @@ function TaskAddSignature( data )
              html+='</div>';
              html+='<div class="col">';
              if (data.status=="inprogress"){
-                 html+='<b>'+ getTrans("Agregar firma",'add_signature') +'</b>';  
+                 html+='<b>'+ getTrans("Add Signature",'add_signature') +'</b>';  
              } else {
-             	 html+='<b>'+ getTrans("Ver firma",'view_signature') +'</b>';  
+             	 html+='<b>'+ getTrans("View Signature",'view_signature') +'</b>';  
              }           
              html+='</div>';
           html+='</div> ';
@@ -304,14 +285,14 @@ function TaskDetailsChevron_3( data )
              html+='<ons-icon icon="ion-ios-albums-outline" size="20px"></ons-icon>';
              html+='</div>';
              html+='<div class="col">';
-             html+='<b>'+ getTrans("Historial de tareas",'task_history') +'</b>';
+             html+='<b>'+ getTrans("Task History",'task_history') +'</b>';
              html+='<div class="top10"></div>';
              
              $.each( data, function( key, val ) { 
                 html+='<div class="table  equal-col">';
                 
                    html+='<div class="col col-1">';
-                   html+=val.status + " "+ getTrans("el ","at");
+                   html+=val.status + " "+ getTrans("at","at");
                    html+='</div>';
                    
                    html+='<div class="col col-2">';
@@ -410,7 +391,7 @@ function OrderDetails(data)
              html+='<ons-icon icon="ion-coffee" size="20px"></ons-icon>';
              html+='</div>';
              html+='<div class="col">';
-             html+='<b>' + getTrans("Ver detalles de la orden","view_order_details") + '</b>';
+             html+='<b>' + getTrans("View Order Details","view_order_details") + '</b>';             
              html+='</div>';
           html+='</div> ';
     html+='</ons-col>';
@@ -446,9 +427,9 @@ function formatOrderDetails(data , data2 )
 	
 	var item='';
 	
-	item+='<p><b>'+ getTrans("N º de pedido","order_no") + " :" + data.order_info.order_id+'</b></p>'
+	item+='<p><b>'+ getTrans("Order No","order_no") + " :" + data.order_info.order_id+'</b></p>'
 	if (data.order_info.order_change>0){
-	item+='<p>'+ getTrans("Cambio","change") + " :" + prettyPrice(data.order_info.order_change)+'</p>'
+	item+='<p>'+ getTrans("Change","change") + " :" + prettyPrice(data.order_info.order_change)+'</p>'
 	}
 		
 	if (data2.length>0){
@@ -479,7 +460,7 @@ function formatOrderDetails(data , data2 )
 	   	   
 	   	   /*ingredients*/
 	   	   if (val.ingredients.length>0){	
-	   	   	   item+= '<p class="indent top10"><b>'+ getTrans("Ingredientes","ingredients")  +'</b></p>';
+	   	   	   item+= '<p class="indent top10"><b>'+ getTrans("Ingredients","ingredients")  +'</b></p>';
 	   	   	   $.each( val.ingredients, function( key_ing, val_ing ) {     
 	   	   	   	    item+= '<p class="indent">'+val_ing+'</p>';
 	   	   	   });
@@ -746,7 +727,7 @@ function addPhotoChevron(data)
 	             html+='</div>';
 	             html+='<div class="col">';      
 	             
-	             html+='<b>'+ getTrans("Agregar",'add_photo') +'</b>'; 	             
+	             html+='<b>'+ getTrans("Add Photo",'add_photo') +'</b>'; 	             
 	             
 	             html+='</div>';
 	          html+='</div> ';
@@ -851,9 +832,8 @@ function DroffDetails(data)
 	   html+='</ons-list-item>';    
 	    
 		
-	   //setStorage("task_full_data",JSON.stringify(data));
-	   
-		html+='<ons-list-item tappable onclick="viewDropOffMap()"  >';
+	   		
+		html+='<ons-list-item tappable onclick="mapExternalDirection('+ q(data.dropoff_task_lat)+ "," + q(data.dropoff_task_lng) +')"  >';
 	     html+='<ons-col width="90%" >     ';            
 	         html+='<div class="table">';
 	             html+='<div class="col a">';
@@ -953,7 +933,7 @@ function gridPhoto(data , status_raw)
       $("#list-photos").html(html);    
       imageLoaded('.img_loader'); 
    } else {
-   	 dump('Sin foto');   	 
+   	 dump('no photo');   	 
    }
 }
 
