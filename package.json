@@ -15,7 +15,7 @@
         "cordova.plugins.diagnostic": "5.0.1",
         "cordova-plugin-request-location-accuracy": "2.3.0",
         "uk.co.workingedge.phonegap.plugin.launchnavigator": "5.0.4",
-        "cordova-plugin-ionic-webview": "5.0.0",
+    
         "cordova-plugin-insomnia": "4.3.0", 
         "@mauron85/cordova-plugin-background-geolocation": "^3.1.0",        
         "cordova-plugin-dialogs": "git+https://github.com/dpa99c/cordova-plugin-dialogs.git",
@@ -41,7 +41,7 @@
             "uk.co.workingedge.phonegap.plugin.launchnavigator": {
                 "GOOGLE_API_KEY_FOR_ANDROID": ""
             },
-            "cordova-plugin-ionic-webview": {},
+           
             "cordova-plugin-insomnia": {},
             "@mauron85/cordova-plugin-background-geolocation": {
               "GOOGLE_PLAY_SERVICES_VERSION": "11+",
@@ -63,6 +63,8 @@
                 "SETUP_RECAPTCHA_VERIFICATION": "false",
                 "IOS_STRIP_DEBUG": "true"
             }
+
+          
         }
     },
     "scripts": {
