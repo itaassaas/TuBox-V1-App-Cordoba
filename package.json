@@ -1,6 +1,6 @@
 {
-    "name": "com.bastisapp.driver2",
-    "displayName": "Kartero",
+    "name": "com.itaas.tuboxv1",
+    "displayName": "Tubox Mensajero",
     "dependencies": {
         "cordova-plugin-whitelist": "1.3.4",
         "cordova-plugin-buildinfo": "4.0.0",

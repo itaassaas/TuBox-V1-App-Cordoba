@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" xmlns:android="http://schemas.android.com/apk/res/android" id="com.bastisapp.kartero" versionCode="1.7.0" version="1.7.0">
-  <name>Kartero</name>
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" xmlns:android="http://schemas.android.com/apk/res/android" id="com.itaas.tuboxv1" versionCode="1.7.0" version="1.7.0">
+  <name>Tubox</name>
   <description>
-        Kartero Driver App
+        		TuBox Mensajeros
     </description>
-  <author email="bastikikang@gmail.com" href="http://cordova.io">
-        bastisapp.com
-    </author>
+   <author email="tubox@itaas.com.co" href="http://itaas.com.co">
+        Itaas.com.co
+    </author>  
   <content src="index.html"/>
   <preference name="orientation" value="portrait"/>
   <preference name="SplashScreenDelay" value="0"/>
